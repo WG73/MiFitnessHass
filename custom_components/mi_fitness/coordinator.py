@@ -28,6 +28,7 @@ from .const import (
     KEY_SLEEP,
     KEY_SPO2,
     KEY_STEPS,
+    KEY_STRESS,
     KEY_VITALITY,
     KEY_VALID_STAND,
     KEY_WEIGHT,
@@ -458,6 +459,15 @@ class MiFitnessCoordinator(DataUpdateCoordinator):
                     if spo2_val:
                         self._sensor_data["spo2"]    = spo2_val
                         self._sensor_data["spo2_ts"] = ts
+
+            # ── Stress ────────────────────────────────────────────────────
+            elif key == KEY_STRESS:
+                if ts < recent_cutoff:
+                    continue
+                prev = self._sensor_data.get("stress_ts", 0)
+                if ts > prev and isinstance(val, dict) and val.get("stress"):
+                    self._sensor_data["stress"]    = val["stress"]
+                    self._sensor_data["stress_ts"] = ts
 
             # ── Vitality ──────────────────────────────────────────────────
             elif key == KEY_VITALITY:
