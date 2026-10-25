@@ -13,7 +13,8 @@ which device produced it.
 > ([#5](https://github.com/batareya16/MiFitnessHass/pull/5)) and correct sleep
 > duration for interrupted nights
 > ([#6](https://github.com/batareya16/MiFitnessHass/pull/6)).
-> Once they are merged, switch back to the original repository.
+> Once they are merged, switch back to the original repository. Problems with
+> this fork: [issues here](https://github.com/WG73/MiFitnessHass/issues).
 
 > ⚠️ **Disclaimer — educational / unofficial.**
 > Not affiliated with, authorized, or endorsed by Xiaomi. It talks to a private
