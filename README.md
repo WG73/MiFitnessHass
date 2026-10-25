@@ -6,6 +6,15 @@ Fitness / MiHealth** cloud. Data is read at the account level — whatever your
 Xiaomi devices (bands, scales, …) sync to Mi Fitness shows up, regardless of
 which device produced it.
 
+> ℹ️ **This is a fork** of [batareya16/MiFitnessHass](https://github.com/batareya16/MiFitnessHass)
+> with changes that are submitted upstream but not merged yet:
+> stress sensor ([#4](https://github.com/batareya16/MiFitnessHass/pull/4)),
+> long-term statistics for heart rate, SpO₂ and steps
+> ([#5](https://github.com/batareya16/MiFitnessHass/pull/5)) and correct sleep
+> duration for interrupted nights
+> ([#6](https://github.com/batareya16/MiFitnessHass/pull/6)).
+> Once they are merged, switch back to the original repository.
+
 > ⚠️ **Disclaimer — educational / unofficial.**
 > Not affiliated with, authorized, or endorsed by Xiaomi. It talks to a private
 > cloud API by reusing your own account session, which may break at any time and
@@ -30,7 +39,7 @@ which device produced it.
 ## Installation (HACS)
 
 1. HACS → **⋮** → **Custom repositories**.
-2. Add `https://github.com/batareya16/MiFitnessHass` as category **Integration**.
+2. Add `https://github.com/WG73/MiFitnessHass` as category **Integration**.
 3. Install **Mi Fitness**, then restart Home Assistant.
 4. **Settings → Devices & Services → Add Integration → Mi Fitness**.
 
