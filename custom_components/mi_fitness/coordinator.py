@@ -464,10 +464,13 @@ class MiFitnessCoordinator(DataUpdateCoordinator):
             elif key == KEY_STRESS:
                 if ts < recent_cutoff:
                     continue
-                prev = self._sensor_data.get("stress_ts", 0)
-                if ts > prev and isinstance(val, dict) and val.get("stress"):
+                if not isinstance(val, dict) or val.get("stress") is None:
+                    continue
+                # 0 is a valid reading; prefer the measurement's own timestamp
+                stress_ts = val.get("time") or ts
+                if stress_ts > self._sensor_data.get("stress_ts", 0):
                     self._sensor_data["stress"]    = val["stress"]
-                    self._sensor_data["stress_ts"] = ts
+                    self._sensor_data["stress_ts"] = stress_ts
 
             # ── Vitality ──────────────────────────────────────────────────
             elif key == KEY_VITALITY:
