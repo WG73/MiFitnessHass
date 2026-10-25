@@ -34,6 +34,7 @@ from .const import (
     KEY_SLEEP,
     KEY_SPO2,
     KEY_STEPS,
+    KEY_STRESS,
     KEY_VITALITY,
     KEY_VALID_STAND,
     KEY_WEIGHT,
@@ -491,6 +492,18 @@ class MiFitnessCoordinator(DataUpdateCoordinator):
                         self._sensor_data["spo2_ts"] = ts
                 if ts >= recent_cutoff and isinstance(val, dict) and val.get("spo2"):
                     self._add_reading("spo2", ts, val["spo2"], touched_hours)
+
+            # ── Stress ────────────────────────────────────────────────────
+            elif key == KEY_STRESS:
+                if ts < recent_cutoff:
+                    continue
+                if not isinstance(val, dict) or val.get("stress") is None:
+                    continue
+                # 0 is a valid reading; prefer the measurement's own timestamp
+                stress_ts = val.get("time") or ts
+                if stress_ts > self._sensor_data.get("stress_ts", 0):
+                    self._sensor_data["stress"]    = val["stress"]
+                    self._sensor_data["stress_ts"] = stress_ts
 
             # ── Vitality ──────────────────────────────────────────────────
             elif key == KEY_VITALITY:

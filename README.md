@@ -17,7 +17,8 @@ which device produced it.
 ## Features
 
 - Sensors: steps, distance, calories, heart rate (avg/max/min/resting), sleep
-  (duration, stages, quality, chronotype), vitality, stand hours, SpO₂, weight.
+  (duration, stages, quality, chronotype), vitality, stand hours, SpO₂, stress,
+  weight.
 - Long-term statistics from every synced reading: hourly heart rate and SpO₂
   (mean/min/max) and steps — see [History statistics](#history-statistics).
 - Silent token refresh using `passToken` — survives `serviceToken` expiry
